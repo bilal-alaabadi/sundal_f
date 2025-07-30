@@ -14,7 +14,7 @@ const Checkout = () => {
   const { user } = useSelector(state => state.auth);
 
   // سعر الشحن الأساسي بالريال العماني
-  const baseShippingFee = country === 'الإمارات'? 4 : 2;
+  const baseShippingFee = country === 'الإمارات'? 0.1 : 0.1;
 
   // العملة وسعر الصرف حسب البلد
   const currency = country === 'الإمارات' ? 'د.إ' : 'ر.ع.';
