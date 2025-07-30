@@ -14,7 +14,7 @@ const OrderSummary = ({ onClose }) => {
     // حساب الإجمالي النهائي مع تحويل العملة إذا لزم الأمر
     const grandTotal = (totalPrice + shippingFee) * exchangeRate;
     const formattedTotalPrice = (totalPrice * exchangeRate).toFixed(2);
-    const formattedShippingFee = (shippingFee * exchangeRate).toFixed(2);
+const formattedShippingFee = 0; // يمكنك تعيينها مباشرة إلى 0
     const formattedGrandTotal = grandTotal.toFixed(2);
 
     const handleClearCart = () => {

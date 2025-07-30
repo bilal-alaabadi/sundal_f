@@ -4,7 +4,7 @@ const initialState = {
   products: [],
   selectedItems: 0,
   totalPrice: 0,
-  shippingFee: 2,
+  shippingFee: 0, // تغيير إلى 0
   country: 'عمان',
 };
 
@@ -53,7 +53,7 @@ const cartSlice = createSlice({
     },
     setCountry: (state, action) => {
       state.country = action.payload;
-      state.shippingFee = action.payload === 'الإمارات' ? 4 : 2;
+  state.shippingFee = 0; // دائماً 0 بغض النظر عن البلد
     }
   },
 });
