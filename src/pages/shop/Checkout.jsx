@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RiBankCardLine } from "react-icons/ri";
 import { getBaseUrl } from '../../utils/baseURL';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState('');
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
@@ -13,39 +15,33 @@ const Checkout = () => {
   const { products, totalPrice, country } = useSelector((state) => state.cart);
   const { user } = useSelector(state => state.auth);
 
-  // سعر الشحن الأساسي بالريال العماني
-<<<<<<< HEAD
-  const baseShippingFee = country === 'الإمارات'? 0.1 : 0.1;
-
-<<<<<<< HEAD
+  // أسعار الشحن والعملات
   const baseShippingFee = country === 'الإمارات' ? 4 : 2;
-=======
-  // العملة وسعر الصرف حسب البلد
-=======
-  const baseShippingFee = country === 'الإمارات' ? 4 : 2;
->>>>>>> 2907c83 (وصف التغييرات هنا)
->>>>>>> 3d04c69 (وصف التغييرات هنا)
   const currency = country === 'الإمارات' ? 'د.إ' : 'ر.ع.';
   const exchangeRate = country === 'الإمارات' ? 9.5 : 1;
-  
-  // تصحيح حساب shippingFee
-<<<<<<< HEAD
-  const shippingFee = country === 'الإمارات' ? 4 * exchangeRate : 2;ش
-=======
   const shippingFee = country === 'الإمارات' ? 4 * exchangeRate : 2;
->>>>>>> 3d04c69 (وصف التغييرات هنا)
   const totalShippingFee = country === 'الإمارات' ? 4 : 2;
 
   useEffect(() => {
+    if (!user) {
+      navigate('/login', { state: { from: '/checkout' } });
+      return;
+    }
+
     if (products.length === 0) {
       setError("لا توجد منتجات في السلة. الرجاء إضافة منتجات قبل المتابعة إلى الدفع.");
     } else {
       setError('');
     }
-  }, [products]);
+  }, [user, products, navigate]);
 
   const makePayment = async (e) => {
     e.preventDefault();
+
+    if (!user) {
+      navigate('/login');
+      return;
+    }
 
     if (products.length === 0) {
       setError("لا توجد منتجات في السلة. الرجاء إضافة منتجات قبل المتابعة إلى الدفع.");
@@ -77,7 +73,8 @@ const Checkout = () => {
       const response = await fetch(`${getBaseUrl()}/api/orders/create-checkout-session`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${user.token}`
         },
         body: JSON.stringify(body)
       });
@@ -99,6 +96,10 @@ const Checkout = () => {
       setError(error.message || "حدث خطأ أثناء عملية الدفع. الرجاء المحاولة مرة أخرى.");
     }
   };
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="p-4 md:p-6 max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
