@@ -16,11 +16,13 @@ const Checkout = () => {
   // سعر الشحن الأساسي بالريال العماني
   const baseShippingFee = country === 'الإمارات'? 0.1 : 0.1;
 
-  // العملة وسعر الصرف حسب البلد
+  const baseShippingFee = country === 'الإمارات' ? 4 : 2;
   const currency = country === 'الإمارات' ? 'د.إ' : 'ر.ع.';
   const exchangeRate = country === 'الإمارات' ? 9.5 : 1;
-
-  const shippingFee = baseShippingFee * exchangeRate;
+  
+  // تصحيح حساب shippingFee
+  const shippingFee = country === 'الإمارات' ? 4 * exchangeRate : 2;ش
+  const totalShippingFee = country === 'الإمارات' ? 4 : 2;
 
   useEffect(() => {
     if (products.length === 0) {
