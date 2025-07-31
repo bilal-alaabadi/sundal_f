@@ -36,9 +36,9 @@ const Navbar = () => {
 
     const userMenus = [
         { label: "لوحة التحكم", path: "/dashboard" },
-        { label: "الملف الشخصي", path: "/dashboard/profile" },
-        { label: "المدفوعات", path: "/dashboard/payments" },
-        { label: "الطلبات", path: "/dashboard/orders" },
+        // { label: "الملف الشخصي", path: "/dashboard/profile" },
+        // { label: "المدفوعات", path: "/dashboard/payments" },
+        // { label: "الطلبات", path: "/dashboard/orders" },
     ];
 
     const dropdownMenus = user?.role === 'admin' ? adminMenus : userMenus;
