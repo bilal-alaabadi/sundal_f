@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const OrderSummary = ({ onClose }) => {
     const dispatch = useDispatch();
-    const { selectedItems, totalPrice, shippingFee, country } = useSelector((store) => store.cart);
+    const { products, totalPrice, shippingFee, country } = useSelector((store) => store.cart);
     
     // تحديد العملة وسعر الصرف حسب الدولة
     const currency = country === 'الإمارات' ? 'د.إ' : 'ر.ع.';
@@ -14,18 +14,44 @@ const OrderSummary = ({ onClose }) => {
     // حساب الإجمالي النهائي مع تحويل العملة إذا لزم الأمر
     const grandTotal = (totalPrice + shippingFee) * exchangeRate;
     const formattedTotalPrice = (totalPrice * exchangeRate).toFixed(2);
-const formattedShippingFee = 0; // يمكنك تعيينها مباشرة إلى 0
+    const formattedShippingFee = (shippingFee * exchangeRate).toFixed(2);
     const formattedGrandTotal = grandTotal.toFixed(2);
 
     const handleClearCart = () => {
         dispatch(clearCart());
     };
 
+    // عرض تفاصيل التخصيص إذا كانت موجودة
+    const renderCustomizationDetails = (item) => {
+        if (!item.customization) return null;
+        
+        return (
+            <div className="mt-2 text-sm text-gray-100">
+                {item.customization.length && <p>الطول: {item.customization.length} سم</p>}
+                {item.customization.width && <p>العرض: {item.customization.width} سم</p>}
+                {item.customization.sleeveType && <p>نوع الأكمام: {item.customization.sleeveType}</p>}
+                {item.customization.closureType && <p>نوع الإغلاق: {item.customization.closureType}</p>}
+                {item.customization.color && <p>اللون: {item.customization.color}</p>}
+                {item.customization.notes && <p>ملاحظات: {item.customization.notes}</p>}
+            </div>
+        );
+    };
+
     return (
         <div className='bg-[#758d64] mt-5 rounded text-base' >
             <div className='px-6 py-4 space-y-5'>
                 <h2 className='text-xl text-white'>ملخص الطلب</h2>
-                <p className='text-white mt-2'>العناصر المحددة: {selectedItems}</p>
+                
+                {/* عرض تفاصيل العناصر مع التخصيص إن وجد */}
+                <div className="text-white space-y-4">
+                    {products.map((item, index) => (
+                        <div key={index} className="border-b pb-3">
+                            <p>{item.name} × {item.quantity}</p>
+                            {item.customization && renderCustomizationDetails(item)}
+                            <p className="text-sm mt-1">السعر: {(item.price * exchangeRate * item.quantity).toFixed(2)} {currency}</p>
+                        </div>
+                    ))}
+                </div>
                 
                 <div className='text-white'>
                     <p>السعر الفرعي: {formattedTotalPrice} {currency}</p>
