@@ -8,15 +8,9 @@ import UploadImage from '../addProduct/UploadImage';
 
 const categories = [
     { label: 'أختر منتج', value: '' },
-    { label: 'حناء بودر', value: 'حناء بودر' },
-    { label: 'سدر بودر', value: 'سدر بودر' },
-    { label: 'أعشاب تكثيف وتطويل الشعر', value: 'أعشاب تكثيف وتطويل الشعر' },
-    { label: 'مشاط', value: 'مشاط' },
-    { label: 'خزامى', value: 'خزامى' },
-    { label: 'كركديه', value: 'كركديه' },
-    { label: 'إكليل الجبل', value: 'إكليل الجبل' }
+    { label: 'عطر', value: 'عطر' },
+   
 ];
-
 const sizes = [
     { label: 'اختر الحجم', value: '' },
     { label: '1 كيلو', value: '1 كيلو' },

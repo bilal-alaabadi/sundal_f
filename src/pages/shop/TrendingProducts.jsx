@@ -46,7 +46,7 @@ const TrendingProducts = () => {
 
     return (
         <section className="section__container product__container">
-            <h2 className="section__header text-3xl font-bold text-[#e2e5e5] mb-4">
+            <h2 className="section__heade text-3xl font-bold text-[#e9b86b] mb-4">
                 منتجات جديدة
             </h2>
             <p className="section__subheader text-lg text-gray-600 mb-12" dir='rtl'>

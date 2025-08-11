@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFetchProductByIdQuery } from '../../../redux/features/products/productsApi';
 import { addToCart } from '../../../redux/features/cart/cartSlice';
 import ReviewsCard from '../reviews/ReviewsCard';
+import imge from '../../../assets/01.png';
 
 const SingleProduct = () => {
     const { id } = useParams();
@@ -61,17 +62,29 @@ const SingleProduct = () => {
     const price = (singleProduct.regularPrice || singleProduct.price || 0) * exchangeRate;
     const oldPrice = singleProduct.oldPrice ? singleProduct.oldPrice * exchangeRate : null;
     const discountPercentage = oldPrice ? Math.round(((oldPrice - price) / oldPrice) * 100) : 0;
-
+ 
     return (
         <>
-            <section className='section__container bg-[#e2e5e5]'>
-                <h2 className='section__header capitalize'>صفحة المنتج الفردي</h2>
-                <div className='section__subheader space-x-2'>
-                    <span className='hover:text-[#4E5A3F]'><Link to="/">الرئيسية</Link></span>
-                    <i className="ri-arrow-right-s-line"></i>
-                    <span className='hover:text-[#4E5A3F]'><Link to="/shop">المتجر</Link></span>
-                    <i className="ri-arrow-right-s-line"></i>
-                    <span className='hover:text-[#4E5A3F]'>{singleProduct.name}</span>
+<section className="relative w-full">
+                <div className="relative h-64 md:h-80">
+                    <img 
+                        src={imge} 
+                        alt="متجر الحناء" 
+                        className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4">
+                        <h2 className="text-2xl md:text-4xl font-bold mb-4">صفحة المتجر</h2>
+                        <div className="flex items-center gap-2 text-sm md:text-base">
+                            <span className="hover:text-[#e9b86b] transition-colors">
+                                <Link to="/">الرئيسية</Link>
+                            </span>
+                            <i className="ri-arrow-right-s-line"></i>
+                            <span className="hover:text-[#e9b86b] transition-colors">
+                                <Link to="/shop">المتجر</Link>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -149,7 +162,7 @@ const SingleProduct = () => {
                                 e.stopPropagation();
                                 handleAddToCart(singleProduct);
                             }}
-                            className={`mt-6 px-6 py-3 bg-[#3D4B2E] text-white rounded-md hover:bg-[#4E5A3F] transition-all duration-200 relative overflow-hidden ${
+                            className={`mt-6 px-6 py-3 bg-[#e9b86b] text-white rounded-md  transition-all duration-200 relative overflow-hidden ${
                                 isAddingToCart ? 'bg-green-600' : ''
                             }`}
                         >

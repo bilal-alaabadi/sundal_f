@@ -34,7 +34,15 @@
   font-size: 2rem;
   font-weight: 800;
   font-family: var(--header-font);
-  color: var(--text-dark);
+  color: #4E5A3F;
+  text-align: center;
+}
+.section__heade {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: var(--header-font);
+  color: #e9b86b;
   text-align: center;
 }
 

@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import ProductCards from './ProductCards';
 import ShopFiltering from './ShopFiltering';
 import { useFetchAllProductsQuery } from '../../redux/features/products/productsApi';
-import imge from "../../assets/Untitled-2-with-text (1).png";
+import imge from "../../assets/02.png";
 
 const filters = {
-    categories: ['الكل', 'حناء بودر', 'سدر بودر', 'أعشاب تكثيف وتطويل الشعر', 'مشاط', 'خزامى', 'كركديه', 'إكليل الجبل'],
-    sizes: ['1 كيلو', '500 جرام']
+    categories: ['الكل'],
 };
 
 const ShopPage = () => {
@@ -50,50 +49,23 @@ const ShopPage = () => {
 
     return (
         <>
-            {/* Hero Section with Image */}
-            <section className='relative h-64 md:h-80 lg:h-96 w-full overflow-hidden bg-[#e2e5e5]'>
+            {/* Hero Section with Banner Image */}
+            <section className="relative w-full h-64 md:h-80 lg:h-96 overflow-hidden">
                 <img 
                     src={imge} 
-                    alt="متجر حناء برغند" 
-                    className="w-full h-full object-cover object-center"
+                    alt="متجر الحناء" 
+                    className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center px-4">
-                    </h1>
+                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center">
+                        متجرنا
+                    </h2>
                 </div>
             </section>
 
             {/* Products Section */}
             <section className='section__container py-8'>
                 <div className='flex flex-col md:flex-row md:gap-8 gap-6'>
-                    {/* Filters Section */}
-                    <div className='md:w-1/4'>
-                        <button
-                            onClick={() => setShowFilters(!showFilters)}
-                            className='md:hidden w-full bg-[#9B2D1F] text-white py-2 px-4 rounded-md mb-4 flex items-center justify-between'
-                        >
-                            <span>{showFilters ? 'إخفاء الفلاتر' : 'تصفية المنتجات'}</span>
-                            <svg 
-                                className={`w-5 h-5 transition-transform ${showFilters ? 'rotate-180' : ''}`} 
-                                fill="none" 
-                                stroke="currentColor" 
-                                viewBox="0 0 24 24" 
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div className={`${showFilters ? 'block' : 'hidden'} md:block bg-white p-4 rounded-lg shadow-sm`}>
-                            <ShopFiltering
-                                filters={filters}
-                                filtersState={filtersState}
-                                setFiltersState={setFiltersState}
-                                clearFilters={clearFilters}
-                            />
-                        </div>
-                    </div>
-
                     {/* Products List */}
                     <div className='md:w-3/4'>
                         <div className='flex justify-between items-center mb-6'>
