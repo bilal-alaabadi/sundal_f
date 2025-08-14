@@ -237,6 +237,7 @@ ${viewOrder.products?.map(p => `- ${p.name} (${p.quantity}x ${(p.price || 0).toF
                                     <div className="space-y-1 text-sm">
                                         <p><strong>البلد:</strong> {viewOrder.country || 'غير محدد'}</p>
                                         <p><strong>الولاية:</strong> {viewOrder.wilayat || 'غير محدد'}</p>
+                                        <p><strong>الايميل:</strong> {viewOrder.email || 'لا يوجد'}</p>
                                         <p><strong>ملاحظات:</strong> {viewOrder.description || 'لا توجد ملاحظات'}</p>
                                     </div>
                                 </div>
