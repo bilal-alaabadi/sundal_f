@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFetchProductByIdQuery } from '../../../redux/features/products/productsApi';
 import { addToCart } from '../../../redux/features/cart/cartSlice';
 import ReviewsCard from '../reviews/ReviewsCard';
-import imge from '../../../assets/01.png';
+import imge from '../../../assets/تصميم-بنر-للمتجر.png-02.png';
 
 const SingleProduct = () => {
     const { id } = useParams();
@@ -162,7 +162,7 @@ const SingleProduct = () => {
                                 e.stopPropagation();
                                 handleAddToCart(singleProduct);
                             }}
-                            className={`mt-6 px-6 py-3 bg-[#e9b86b] text-white rounded-md  transition-all duration-200 relative overflow-hidden ${
+                            className={`mt-6 px-6 py-3 bg-[#894361] text-white rounded-md  transition-all duration-200 relative overflow-hidden ${
                                 isAddingToCart ? 'bg-green-600' : ''
                             }`}
                         >

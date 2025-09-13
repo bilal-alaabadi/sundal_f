@@ -1,5 +1,6 @@
 import React from "react";
-import log from "../assets/Lavin .png";
+import Thw from "../assets/images__4_-removebg-preview.png";
+
 import {
   SiVisa,
   SiMastercard,
@@ -22,7 +23,7 @@ const Footer = () => {
           preserveAspectRatio="none"
           aria-hidden="true"
         >
-          <path d="M28 0 H100 V36 H28 A28 28 0 0 1 28 0 Z" fill="#e9b86b"/>
+          <path d="M28 0 H100 V36 H28 A28 28 0 0 1 28 0 Z" fill="#894361"/>
         </svg>
 
         {/* محتوى الشريط */}
@@ -31,11 +32,11 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
             {/* الشعار (كما هو) */}
             <div className="shrink-0 self-start">
-              <img
+              {/* <img
                 src={log}
                 alt="شعار الأنثور"
                 className="w-28 md:w-40 object-contain select-none pointer-events-none"
-              />
+              /> */}
             </div>
 
             {/* وسائل الدفع — تعديل فقط هنا */}
@@ -48,7 +49,11 @@ const Footer = () => {
                   <SiMastercard className="text-3xl md:text-4xl drop-shadow-sm" />
                   <SiApplepay className="text-3xl md:text-4xl drop-shadow-sm" />
                   {/* <SiPaypal className="text-3xl md:text-4xl drop-shadow-sm" /> */}
-                  <SiGooglepay className="text-3xl md:text-4xl drop-shadow-sm" />
+                                    <img
+                    src={Thw}
+                    className="w-10 invert brightness-0"
+                    alt="Thawani"
+                  />
                 </div>
               </div>
 
@@ -69,11 +74,10 @@ const Footer = () => {
           
           {/* لافين */}
           <div>
-            <h4 className="text-xl font-bold mb-3">لافين</h4>
+            <h4 className="text-xl font-bold mb-3">الصندل بيوتي ستور </h4>
             <p className="text-sm leading-7 text-[#4a4a4a]">
-              في لافين نبتكر عطورًا تجمع الذوق العصري بلمسة فاخرة لترافق
-              تفاصيلك اليومية. نحرص على تجربة تسوّق سلسة، وتغليف أنيق، وخدمة
-              عملاء سريعة تلائم ذائقتك.
+                كل منتج لدينا هو مزيج من خبرة تقليدية وأصالة عُمانية، 
+                ليكون لمسة خاصة تليق ببشرتك وذوقك.
             </p>
           </div>
 
@@ -106,10 +110,10 @@ const Footer = () => {
           {/* تواصل معنا */}
           <div>
             <h4 className="text-xl font-bold mb-3">تواصل معنا</h4>
-            <p className="text-sm mb-4">+96895441416</p>
+            <p className="text-sm mb-4">+96896132215</p>
             <div className="flex justify-center md:justify-start gap-4">
               <a
-                href="https://www.instagram.com/lavin.perfume/"
+                href="https://www.instagram.com/bait_alsandal/"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-[#d3ae27] transition"
@@ -118,7 +122,7 @@ const Footer = () => {
                 <FaInstagram className="text-xl" />
               </a>
               <a
-                href="https://api.whatsapp.com/send/?phone=96891175734&text&type=phone_number&app_absent=0"
+                href="https://api.whatsapp.com/send/?phone=96896132215&text&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-[#d3ae27] transition"
